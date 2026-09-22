@@ -68,7 +68,7 @@ The system supports account management, fund transfers, deposits, withdrawals, a
 - Implemented role-based modules for Admin, Staff, and Customer operations.
 - Separated data structures, business logic, modules, and utility functions into dedicated directories.
 - Used transaction-specific files to maintain individual account transaction records.
-- Applied Object-Oriented Programming concepts such as classes, encapsulation, abstraction, inheritance, and polymorphism where applicable.
+- Applied Object-Oriented Programming concepts such as classes, encapsulation, and modular design.
 
 ---
 
@@ -104,7 +104,7 @@ The system supports account management, fund transfers, deposits, withdrawals, a
                                   │
                                   ▼
                          ┌──────────────────┐
-                         │ Role-Based       │
+                         │  Role-Based      │
                          │     Module       │
                          └────────┬─────────┘
                                   │
@@ -133,7 +133,13 @@ The system supports account management, fund transfers, deposits, withdrawals, a
                          │ Persistent Data  │
                          │     Storage      │
                          └──────────────────┘
+```
 
+---
+
+## Project Structure
+
+```text
 BankCore/
 │
 ├── data/
@@ -187,7 +193,9 @@ BankCore/
 ├── Makefile
 ├── README.md
 └── .gitignore
+```
 
+---
 
 ## Build and Run
 
@@ -209,12 +217,126 @@ Clone the BankCore repository from GitHub:
 
 ```bash
 git clone https://github.com/divyanshupadhyay83/BankCore.git
+```
+
+Navigate to the project directory:
+
+```bash
 cd BankCore
+```
+
+---
+
+## Compile
+
+Using the provided Makefile:
+
+```bash
 make
+```
+
+You can also compile the project manually:
+
+```bash
 g++ -std=c++17 src/main.cpp src/bst/*.cpp src/hashtable/*.cpp src/modules/*.cpp src/utils/*.cpp -Iinclude -o fintrack
+```
 
-Author
+---
 
-Divyansh Upadhyay
+## Run
+
+On Windows:
+
+```powershell
+.\fintrack.exe
+```
+
+On Linux / Git Bash:
+
+```bash
+./fintrack
+```
+
+---
+
+## Data Storage
+
+BankCore uses file handling for persistent storage.
+
+### Accounts
+
+Account information is stored in:
+
+```text
+data/accounts.txt
+```
+
+### Credentials
+
+Authentication credentials are stored in:
+
+```text
+data/credentials.txt
+```
+
+### Transactions
+
+Individual account transaction records are stored inside:
+
+```text
+data/transactions/
+```
+
+For example:
+
+```text
+data/transactions/1001.txt
+data/transactions/1002.txt
+```
+
+This allows transaction information to remain available between application sessions.
+
+---
+
+## Learning Outcomes
+
+Through this project, I gained hands-on experience with:
+
+- Designing applications using Object-Oriented Programming principles
+- Implementing Binary Search Trees and Hash Tables
+- Working with nodes and linked data structures
+- Managing persistent storage using file handling
+- Implementing role-based authentication
+- Structuring a medium-sized C++ project using modular design
+- Applying Data Structures and Algorithms to a real-world application
+- Using Git and GitHub for version control
+
+---
+
+## Future Enhancements
+
+- Implement AVL Trees for self-balancing account storage
+- Integrate a relational database such as MySQL or PostgreSQL
+- Add transaction timestamps and detailed audit logs
+- Implement stronger password encryption
+- Add OTP-based authentication
+- Develop a graphical user interface (GUI)
+- Add advanced account search and reporting features
+- Add automated backup and recovery
+- Develop a web-based version of the application
+- Add API-based integration for external services
+
+---
+
+## Author
+
+**Divyansh Upadhyay**
 
 B.Tech Computer Science Engineering Student
+
+
+## Disclaimer
+
+BankCore is an academic and learning project developed to demonstrate C++ programming, data structures, file handling, authentication, and modular software development.
+
+It is not intended for use as a production banking system.
