@@ -1,80 +1,144 @@
 # BankCore
 
-BankCore is a console-based banking management application developed in C++. 
-The project provides a structured system for managing customer accounts, 
-authentication, banking operations, and account-related information.
+## Overview
 
-The project demonstrates the use of important C++ concepts and Data Structures 
-such as Object-Oriented Programming, Binary Search Tree (BST), Hash Tables, 
-File Handling, Modular Programming, and Makefile-based compilation.
+BankCore is a console-based banking application developed in C++ that simulates core banking operations through a role-based access model. The project demonstrates Object-Oriented Programming principles, efficient data management using custom data structures, and persistent storage through file handling.
+
+The system supports account management, fund transfers, deposits, withdrawals, authentication, and transaction tracking while maintaining a modular and organized code structure.
+
+---
+
+## Key Concepts Demonstrated
+
+- Object-Oriented Programming (OOP)
+- Data Structures and Algorithms
+- Binary Search Tree (BST)
+- Hash Table
+- Linked Lists
+- File Handling and Data Persistence
+- Role-Based Access Control
+- Modular Software Design
 
 ---
 
 ## Features
 
-### Customer Module
-Customers can perform banking-related operations through their account.
+### Admin
 
-- Customer login and authentication
-- View account details
-- Check account balance
-- Deposit money
-- Withdraw money
-- Transfer money to another account
-- View transaction history
+- Create customer accounts
+- Delete customer accounts
+- View registered accounts
 - Manage account-related operations
 
-### Staff Module
+### Staff
 
-Staff members can manage customer accounts and perform staff-level operations.
+- Deposit funds
+- Withdraw funds
+- Transfer money between accounts
+- Access customer account information
 
-- Staff authentication
-- View customer account information
-- Manage customer-related operations
-- Access account records
-- Perform authorized banking operations
+### Customer
 
-### Admin Module
-
-The administrator has access to administrative operations.
-
-- Admin authentication
-- Manage bank accounts
-- View account records
-- Manage staff/customer-related information
-- Perform administrative operations
+- Secure login authentication
+- View account details
+- Check account balance
+- Deposit and withdraw funds
+- Transfer money
+- View transaction history
 
 ---
 
-## Technologies Used
+## Data Structures Used
 
-- **Programming Language:** C++
-- **Data Structures:**
-  - Binary Search Tree (BST)
-  - Hash Table
-  - Linked List / Node-based structures
-- **Concepts:**
-  - Object-Oriented Programming
-  - File Handling
-  - Authentication
-  - Modular Programming
-  - Exception/Error Handling
-- **Storage:** Text files
-- **Build System:** Makefile
+| Functionality | Data Structure |
+|---|---|
+| Account Management | Binary Search Tree (BST) |
+| User Authentication | Hash Table |
+| Collision Resolution | Linked List / Separate Chaining |
+| Account Records | Node-based Data Structures |
 
 ---
 
-## Project Architecture
+## Technical Highlights
 
-The project is organized into separate directories for better maintainability.
+- Designed a modular architecture using classes and separate modules for maintainability and better code organization.
+- Implemented account management using a Binary Search Tree for organized account storage and retrieval.
+- Utilized a Hash Table-based authentication system for efficient credential lookup.
+- Applied file handling to persist account, credential, and transaction data across application sessions.
+- Implemented role-based modules for Admin, Staff, and Customer operations.
+- Separated data structures, business logic, modules, and utility functions into dedicated directories.
+- Used transaction-specific files to maintain individual account transaction records.
+- Applied Object-Oriented Programming concepts such as classes, encapsulation, abstraction, inheritance, and polymorphism where applicable.
+
+---
+
+## Project Flow
 
 ```text
+                         ┌──────────────────┐
+                         │     BankCore     │
+                         │    Application   │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │    Main Menu     │
+                         └────────┬─────────┘
+                                  │
+                ┌─────────────────┼─────────────────┐
+                │                 │                 │
+                ▼                 ▼                 ▼
+          ┌───────────┐     ┌───────────┐     ┌───────────┐
+          │   Admin   │     │   Staff   │     │ Customer  │
+          │   Login   │     │   Login   │     │   Login   │
+          └─────┬─────┘     └─────┬─────┘     └─────┬─────┘
+                │                 │                 │
+                └─────────────────┼─────────────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │  Authentication  │
+                         │    AuthTable     │
+                         │   (Hash Table)   │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │ Role-Based       │
+                         │     Module       │
+                         └────────┬─────────┘
+                                  │
+              ┌───────────────────┼───────────────────┐
+              │                   │                   │
+              ▼                   ▼                   ▼
+        Admin Operations    Staff Operations    Customer Operations
+              │                   │                   │
+              └───────────────────┼───────────────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │    AccountBST    │
+                         │ Binary Search    │
+                         │      Tree        │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │    FileUtils     │
+                         │  File Handling   │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │ Persistent Data  │
+                         │     Storage      │
+                         └──────────────────┘
+
 BankCore/
 │
 ├── data/
 │   ├── accounts.txt
 │   ├── credentials.txt
-│   │
 │   └── transactions/
 │       ├── 1001.txt
 │       ├── 1002.txt
@@ -120,6 +184,37 @@ BankCore/
 │   │
 │   └── main.cpp
 │
-├── .gitignore
 ├── Makefile
-└── README.md
+├── README.md
+└── .gitignore
+
+
+## Build and Run
+
+### Prerequisites
+
+Make sure you have:
+
+- C++ Compiler
+- Git
+- Make
+
+The project uses **C++17** features.
+
+---
+
+## Clone the Repository
+
+Clone the BankCore repository from GitHub:
+
+```bash
+git clone https://github.com/divyanshupadhyay83/BankCore.git
+cd BankCore
+make
+g++ -std=c++17 src/main.cpp src/bst/*.cpp src/hashtable/*.cpp src/modules/*.cpp src/utils/*.cpp -Iinclude -o fintrack
+
+Author
+
+Divyansh Upadhyay
+
+B.Tech Computer Science Engineering Student
